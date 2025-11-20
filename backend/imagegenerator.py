@@ -43,14 +43,13 @@ class ImageGenerator:
             print(f"⊘ Skipping image generation (no API key): {food_name}")
             return None
 
-        # Generate image using DALL-E 2 (faster and cheaper)
+        # Generate image using DALL-E 3
         try:
             print(f"Generating image for: {food_name} from {dining_hall}...")
             response = self.client.images.generate(
-                model="dall-e-2",
-                prompt=f"A delicious, appetizing photo of {food_name} with a small wiscosin madison badge",
-                size="256x256",
-                n=1,
+                model="dall-e-3",
+                prompt=f"A professional, appetizing food photograph of {food_name} on a clean white plate, centered composition, bright natural lighting, HD quality, modern advertisement style, vibrant colors, appetizing presentation",
+                size="1024x1024",
             )
 
             # Download and save the image

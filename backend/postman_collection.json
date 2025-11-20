@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "dining-hall-api-collection",
+		"name": "Dining Hall API",
+		"description": "API for dining hall food recommendations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Server Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				},
+				"description": "Get basic server info and total items count"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Foods",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/foods",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"foods"
+					]
+				},
+				"description": "Get all food items with name, dining hall, calories, and image URL"
+			},
+			"response": []
+		},
+		{
+			"name": "Reload Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/reload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reload"
+					]
+				},
+				"description": "Reload CSV data and regenerate missing images"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Image (Example)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/images/sunrise_special_smoothie_four_lakes_market.png",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"images",
+						"sunrise_special_smoothie_four_lakes_market.png"
+					]
+				},
+				"description": "Get a specific food image (example)"
+			},
+			"response": []
+		}
+	]
+}
