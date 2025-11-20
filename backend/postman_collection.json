@@ -2,92 +2,176 @@
 	"info": {
 		"_postman_id": "dining-hall-api-collection",
 		"name": "Dining Hall API",
-		"description": "API for dining hall food recommendations",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"description": "Backend API for dining hall food recommendations with AI-generated images using DALL-E 3.\n\n## Quick Setup\n1. Start the server: `uv run uvicorn server:app --host 0.0.0.0 --port 8000`\n2. Import this collection into Postman\n3. Test the endpoints!\n\n## Available Endpoints\n- GET / - Server status\n- GET /api/foods - All food items\n- GET /api/reload - Reload data and regenerate images\n- GET /images/{filename} - Serve images",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"version": "1.0.0"
 	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	],
 	"item": [
 		{
-			"name": "Get Server Info",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						""
+			"name": "Status",
+			"item": [
+				{
+					"name": "Get Server Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": ["{{base_url}}"],
+							"path": [""]
+						},
+						"description": "Get API status and total items count.\n\n**Response:**\n```json\n{\n  \"message\": \"Dining Hall API\",\n  \"total_items\": 105\n}\n```"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/",
+									"host": ["{{base_url}}"],
+									"path": [""]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": "{\n  \"message\": \"Dining Hall API\",\n  \"total_items\": 105\n}"
+						}
 					]
-				},
-				"description": "Get basic server info and total items count"
-			},
-			"response": []
+				}
+			]
 		},
 		{
-			"name": "Get All Foods",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/api/foods",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"foods"
+			"name": "Foods",
+			"item": [
+				{
+					"name": "Get All Foods",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/foods",
+							"host": ["{{base_url}}"],
+							"path": ["api", "foods"]
+						},
+						"description": "Get all food items with images and dining hall information.\n\n**Returns:**\nArray of food objects containing:\n- `id`: Unique identifier\n- `name`: Food name\n- `diningHall`: Dining hall location\n- `calories`: Calorie count\n- `image_url`: URL to AI-generated image\n- `filename`: Image filename"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/foods",
+									"host": ["{{base_url}}"],
+									"path": ["api", "foods"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": "[\n  {\n    \"id\": \"Sunrise Special Smoothie_Four Lakes Market\",\n    \"name\": \"Sunrise Special Smoothie\",\n    \"diningHall\": \"Four Lakes Market\",\n    \"calories\": 219,\n    \"image_url\": \"/images/sunrise_special_smoothie_four_lakes_market.png\",\n    \"filename\": \"sunrise_special_smoothie_four_lakes_market.png\"\n  },\n  {\n    \"id\": \"Pizza_North Campus Dining\",\n    \"name\": \"Pizza\",\n    \"diningHall\": \"North Campus Dining\",\n    \"calories\": 450,\n    \"image_url\": \"/images/pizza_north_campus_dining.png\",\n    \"filename\": \"pizza_north_campus_dining.png\"\n  }\n]"
+						}
 					]
-				},
-				"description": "Get all food items with name, dining hall, calories, and image URL"
-			},
-			"response": []
+				}
+			]
 		},
 		{
-			"name": "Reload Data",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/api/reload",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"reload"
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Reload Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reload",
+							"host": ["{{base_url}}"],
+							"path": ["api", "reload"]
+						},
+						"description": "Reload CSV data and regenerate missing images.\n\nThis will:\n1. Clear current database\n2. Reload from dataset/nov19.csv\n3. Generate images for items without existing images"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/reload",
+									"host": ["{{base_url}}"],
+									"path": ["api", "reload"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": "{\n  \"message\": \"Data reloaded\",\n  \"total_items\": 105\n}"
+						}
 					]
-				},
-				"description": "Reload CSV data and regenerate missing images"
-			},
-			"response": []
+				}
+			]
 		},
 		{
-			"name": "Get Image (Example)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/images/sunrise_special_smoothie_four_lakes_market.png",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"images",
-						"sunrise_special_smoothie_four_lakes_market.png"
-					]
+			"name": "Images",
+			"item": [
+				{
+					"name": "Get Image (Sunrise Smoothie)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/images/sunrise_special_smoothie_four_lakes_market.png",
+							"host": ["{{base_url}}"],
+							"path": ["images", "sunrise_special_smoothie_four_lakes_market.png"]
+						},
+						"description": "Get a specific AI-generated food image.\n\nReturns the image file (PNG format, 1024x1024px)."
+					},
+					"response": []
 				},
-				"description": "Get a specific food image (example)"
-			},
-			"response": []
+				{
+					"name": "Get Image (Pizza)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/images/pizza_north_campus_dining.png",
+							"host": ["{{base_url}}"],
+							"path": ["images", "pizza_north_campus_dining.png"]
+						},
+						"description": "Example: Get pizza image from North Campus Dining."
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

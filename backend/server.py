@@ -10,7 +10,13 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-app = FastAPI(title="Dining Hall API")
+app = FastAPI(
+    title="Dining Hall API",
+    description="Backend API for dining hall food recommendations with AI-generated images",
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc"
+)
 
 # Enable CORS for frontend
 app.add_middleware(
@@ -97,20 +103,48 @@ async def startup_event():
     print("Server ready!")
 
 
-@app.get("/")
+@app.get("/", tags=["Status"])
 async def root():
+    """
+    Get API status and total items count
+
+    Returns:
+        - message: API name
+        - total_items: Number of food items loaded
+    """
     return {"message": "Dining Hall API", "total_items": len(food_database)}
 
 
-@app.get("/api/foods", response_model=List[Dict])
+@app.get("/api/foods", response_model=List[Dict], tags=["Foods"])
 async def get_all_foods():
-    """Get all food items with image URLs and dining hall information"""
+    """
+    Get all food items with images and dining hall information
+
+    Returns a list of food items, each containing:
+        - id: Unique identifier (food_name_diningHall)
+        - name: Name of the food item
+        - diningHall: Which dining hall serves this item
+        - calories: Calorie count
+        - image_url: URL to the AI-generated image
+        - filename: Image filename
+    """
     return list(food_database.values())
 
 
-@app.get("/api/reload")
+@app.get("/api/reload", tags=["Admin"])
 async def reload_data():
-    """Reload CSV and regenerate missing images"""
+    """
+    Reload CSV data and regenerate missing images
+
+    This endpoint will:
+        - Clear the current database
+        - Reload data from dataset/nov19.csv
+        - Generate images for items without existing images
+
+    Returns:
+        - message: Status message
+        - total_items: Number of items processed
+    """
     food_database.clear()
     load_and_process_data()
     return {"message": "Data reloaded", "total_items": len(food_database)}
