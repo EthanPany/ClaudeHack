@@ -36,7 +36,7 @@ app.mount("/images", StaticFiles(directory="images"), name="images")
 
 
 def load_and_process_data():
-    """Load CSV data and generate missing images"""
+    """Load CSV data - check for existing images, use Unsplash placeholder if not available"""
     csv_path = Path("dataset/nov19.csv")
 
     if not csv_path.exists():
@@ -61,20 +61,33 @@ def load_and_process_data():
             calories = row.get('calories', 0)
             image_path = row.get('image_path', '')
 
-            # Check if image_path is provided and file exists (skip "na" values)
+            # Check if AI-generated image already exists
+            generated_filename = image_generator.generate_filename(food_name, dining_hall)
+            generated_path = image_generator.images_dir / generated_filename
+
             filename = None
-            if image_path and pd.notna(image_path) and str(image_path).strip() and str(image_path).lower() != 'na':
-                # Use provided image path
+            image_url = None
+
+            # Priority 1: Check if AI-generated image exists
+            if generated_path.exists():
+                filename = generated_filename
+                image_url = f"/images/{filename}"
+                print(f"✓ Using generated image: {filename}")
+            # Priority 2: Check if custom image path is provided
+            elif image_path and pd.notna(image_path) and str(image_path).strip() and str(image_path).lower() != 'na':
                 provided_path = Path(image_path)
                 if provided_path.exists():
                     filename = provided_path.name
-                    print(f"✓ Using existing image: {filename}")
+                    image_url = f"/images/{filename}"
+                    print(f"✓ Using custom image: {filename}")
                 else:
-                    print(f"⚠ Image path not found, will generate: {image_path}")
-                    filename = image_generator.generate_image(food_name, dining_hall)
+                    # Use Unsplash placeholder
+                    image_url = f"https://source.unsplash.com/400x400/?{food_name.replace(' ', '+')},food"
+                    print(f"⊙ Using placeholder for: {food_name}")
             else:
-                # Generate image if it doesn't exist
-                filename = image_generator.generate_image(food_name, dining_hall)
+                # Use Unsplash placeholder
+                image_url = f"https://source.unsplash.com/400x400/?{food_name.replace(' ', '+')},food"
+                print(f"⊙ Using placeholder for: {food_name}")
 
             # Create unique key
             key = f"{food_name}_{dining_hall}"
@@ -85,7 +98,7 @@ def load_and_process_data():
                 "name": food_name,
                 "diningHall": dining_hall,
                 "calories": int(calories) if pd.notna(calories) else 0,
-                "image_url": f"/images/{filename}" if filename else None,
+                "image_url": image_url,
                 "filename": filename
             }
 

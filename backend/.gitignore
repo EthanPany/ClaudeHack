@@ -41,11 +41,11 @@ env/
 .DS_Store
 Thumbs.db
 
-# Generated images
-images/*.png
-images/*.jpg
-images/*.jpeg
-images/*.gif
+# Generated images - now tracked in git
+# images/*.png
+# images/*.jpg
+# images/*.jpeg
+# images/*.gif
 
 # Logs
 *.log
