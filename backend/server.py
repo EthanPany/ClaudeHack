@@ -5,6 +5,10 @@ import pandas as pd
 from pathlib import Path
 from imagegenerator import ImageGenerator
 from typing import List, Dict
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI(title="Dining Hall API")
 
@@ -46,13 +50,14 @@ def load_and_process_data():
 
         # Process each food item
         for idx, row in df.iterrows():
-            food_name = str(row.get('food_name', row.get('name', f'Item {idx}')))
-            dining_hall = str(row.get('dining_hall', row.get('hall', 'Unknown Hall')))
+            food_name = str(row.get('name', f'Item {idx}'))
+            dining_hall = str(row.get('diningHall', 'Unknown Hall'))
+            calories = row.get('calories', 0)
             image_path = row.get('image_path', '')
 
-            # Check if image_path is provided and file exists
+            # Check if image_path is provided and file exists (skip "na" values)
             filename = None
-            if image_path and pd.notna(image_path) and str(image_path).strip():
+            if image_path and pd.notna(image_path) and str(image_path).strip() and str(image_path).lower() != 'na':
                 # Use provided image path
                 provided_path = Path(image_path)
                 if provided_path.exists():
@@ -71,8 +76,9 @@ def load_and_process_data():
             # Store in database
             food_database[key] = {
                 "id": key,
-                "food_name": food_name,
-                "dining_hall": dining_hall,
+                "name": food_name,
+                "diningHall": dining_hall,
+                "calories": int(calories) if pd.notna(calories) else 0,
                 "image_url": f"/images/{filename}" if filename else None,
                 "filename": filename
             }

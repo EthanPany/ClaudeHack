@@ -1,9 +1,107 @@
-food_name,dining_hall,image_path
-Pizza,North Campus Dining,
-Burger,South Campus Dining,
-Pasta Carbonara,North Campus Dining,
-Caesar Salad,East Campus Dining,
-Chicken Teriyaki,West Campus Dining,
-Tacos,South Campus Dining,
-Sushi Roll,East Campus Dining,
-Grilled Salmon,West Campus Dining,
+name,diningHall,calories,image_path
+Sunrise Special Smoothie,Four Lakes Market,219,na
+Sausage Links Chicken (halal) (AYCTE),Four Lakes Market,123,na
+Jackfruit Sausage Patty,Four Lakes Market,100,na
+Scrambled Eggs,Four Lakes Market,253,na
+French Toast,Four Lakes Market,205,na
+Hard Cooked Egg,Four Lakes Market,45,na
+Potato Hashbrown Patty (1),Four Lakes Market,157,na
+Pork Sausage Links,Four Lakes Market,200,na
+Sweet Potato Moroccan Spiced,Four Lakes Market,192,na
+Watermelon Slices,Four Lakes Market,34,na
+Oatmeal (VN),Four Lakes Market,74,na
+Assorted Donuts,Four Lakes Market,384,na
+Mocha Chip Muffin,Four Lakes Market,292,na
+Popcake Pancake,Four Lakes Market,42,na
+Muffin Mini Blueberry,Four Lakes Market,95,na
+Muffin Mini Double Chocolate,Four Lakes Market,85,na
+Station Recipe - Deli AYCTE FLM,Four Lakes Market,142,na
+Lemon Pepper Chicken Salad,Four Lakes Market,245,na
+Basil Pesto Sauce,Four Lakes Market,87,na
+Vegetable Creole (VN),Four Lakes Market,48,na
+Baked Pork Ham,Four Lakes Market,180,na
+Fried Catfish,Four Lakes Market,272,na
+Bean and Carrot Medley,Four Lakes Market,62,na
+Sauteed Collard Greens,Four Lakes Market,51,na
+Long Grain Rice (VN),Four Lakes Market,148,na
+Texas Corn Bread,Four Lakes Market,307,na
+Tartar Sauce,Four Lakes Market,40,na
+Black Bean Burger (VN),Four Lakes Market,431,na
+BBQ Pork Sandwich,Four Lakes Market,413,na
+Straight Cut Fries,Four Lakes Market,161,na
+BYO Bar - Mac & Cheese,Four Lakes Market,422,na
+Seasoned Baked Chicken Quarters,Four Lakes Market,290,na
+Spinach & Mushroom Fried Rice,Four Lakes Market,137,na
+Grilled Sesame Ginger Salmon,Four Lakes Market,409,na
+Sesame Spinach,Four Lakes Market,68,na
+Kung Pao Brussel Sprouts,Four Lakes Market,95,na
+Thai Style Red Quinoa & Vegetables,Four Lakes Market,125,na
+Mango Blueberry Smoothie,Gordon Avenue Market,82,na
+Oatmeal (VN),Gordon Avenue Market,74,na
+Mocha Chip Muffin,Gordon Avenue Market,292,na
+Scrambled Eggs,Gordon Avenue Market,253,na
+Scrambled Egg Whites,Gordon Avenue Market,141,na
+Egg (JUST) Scrambled,Gordon Avenue Market,244,na
+Make Your Own Waffle w/Fruit & Cream,Gordon Avenue Market,580,na
+Hard Cooked Egg,Gordon Avenue Market,45,na
+Chocolate Chip Pancakes (1),Gordon Avenue Market,254,na
+Redstone Potatoes,Gordon Avenue Market,163,na
+Bacon,Gordon Avenue Market,79,na
+Island Spiced Pork w/ Pineapple Salsa,Gordon Avenue Market,142,na
+Tofu Baked w/Ratatouille Vegetable (VN),Gordon Avenue Market,177,na
+Broasted Chicken 2 pc,Gordon Avenue Market,775,na
+Chicken Gravy,Gordon Avenue Market,31,na
+Garbanzos w/ Tomato Sauce,Gordon Avenue Market,67,na
+Miso Cod,Gordon Avenue Market,275,na
+Chicken Pot Pie w/Biscuit,Gordon Avenue Market,420,na
+Riviera Vegetable Blend,Gordon Avenue Market,41,na
+Barley,Gordon Avenue Market,35,na
+Buttermilk Biscuit,Gordon Avenue Market,263,na
+Long Grain Rice (VN),Gordon Avenue Market,148,na
+Steamed Broccoli,Gordon Avenue Market,60,na
+Beef & Chicken Meatballs,Gordon Avenue Market,128,na
+Glazed Ring Donut,Rheta's Market,304,na
+Mocha Chip Muffin,Rheta's Market,292,na
+Popcake Pancake,Rheta's Market,42,na
+Rheta's Breakfast,Rheta's Market,37,na
+Sunrise Special (VN),Rheta's Market,55,na
+Oatmeal (VN),Rheta's Market,74,na
+Hard Cooked Egg,Rheta's Market,45,na
+Scrambled Eggs,Rheta's Market,253,na
+Blueberry Pancakes (1),Rheta's Market,174,na
+Waffle Strawberries & Whipped Crm,Rheta's Market,671,na
+Egg (JUST) Scrambled,Rheta's Market,244,na
+Bacon,Rheta's Market,79,na
+Hashbrown Patty,Rheta's Market,157,na
+Oatmeal (VN),Rheta's Market,74,na
+Turkey Sausage Patties,Rheta's Market,142,na
+Jackfruit Sausage Patty,Rheta's Market,100,na
+Lemon Pepper Tuna Salad,Rheta's Market,246,na
+Basil Pesto Sauce,Rheta's Market,87,na
+Chicken Breast w/Balsamic BBQ Sauce,Rheta's Market,177,na
+Penne Pasta w/ Garbanzo Beans & Olives,Rheta's Market,229,na
+Pork Spicy Citrus w/Bl Beans & Rice,Rheta's Market,344,na
+Blistered Green Bean w/ Pepper & Shallot (151),Rheta's Market,151,na
+Blistered Green Bean w/ Pepper & Shallot (153),Rheta's Market,153,na
+Baby Baker Potatoes,Rheta's Market,124,na
+Squash Butternut w/ Zatar and Tahini,Rheta's Market,194,na
+Vegan Gluten Free Cheese Pizza,Rheta's Market,94,na
+Thin Crust Cheese Pizza,Rheta's Market,346,na
+Thin Crust Tavern Style Pepperoni Pizza,Rheta's Market,322,na
+Tavern Style Sausage Pizza (Pork),Rheta's Market,268,na
+Fired Up Condiment,Rheta's Market,1,na
+Lamb & Beef Gyro Sandwich,Rheta's Market,479,na
+Vegan Buffalo Sandwich on Pretzel Bun,Rheta's Market,384,na
+Seasoned Curly Fries,Rheta's Market,189,na
+Beef Broccoli Stir Fry w/Teriyaki Sauce,Rheta's Market,104,na
+Plant-Based Beef & Broccoli Stir Fry,Rheta's Market,98,na
+White Basmati Rice,Rheta's Market,148,na
+Pork Carnita,Rheta's Market,81,na
+Vegan Chorizo Crumbles,Rheta's Market,106,na
+Beef Taco Meat,Rheta's Market,151,na
+Blackened Chicken with Orange Sauce,Rheta's Market,278,na
+Spicy Quinoa w/Sweet Potatoes,Rheta's Market,266,na
+Caribbean Vegetable Blend,Rheta's Market,44,na
+Roasted Jicama Vegetable Blend,Rheta's Market,68,na
+Ancient Grains & Kale Blend,Rheta's Market,143,na
+Brown Basmati Rice,Rheta's Market,140,na
